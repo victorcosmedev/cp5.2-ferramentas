@@ -95,4 +95,10 @@ public class ProdutoService {
     public Optional<Produto> findById(Long id) {
         return produtoRepository.findById(id);
     }
+
+
+
+    public Optional<Produto> findAllByNome(String nome) {
+        return produtoRepository.findByNome(nome);
+    }
 }

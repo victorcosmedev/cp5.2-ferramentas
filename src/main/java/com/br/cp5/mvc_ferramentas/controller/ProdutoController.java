@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/produto")
@@ -42,7 +43,7 @@ public class ProdutoController {
 
     @GetMapping("/buscarPorNome")
     public String buscarPorNome(@RequestParam String nome, Model model){
-        List<Produto> produto = Collections.singletonList(produtoService.findAllByNome(nome));
+        List<Optional<Produto>> produto = Collections.singletonList(produtoService.findAllByNome(nome));
         model.addAttribute("produtos", List.of(produto));
         return "index";
     }
