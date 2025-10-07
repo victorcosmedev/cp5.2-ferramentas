@@ -18,8 +18,6 @@ public class ProdutoController {
     @Autowired
     ProdutoService produtoService;
 
-
-
     @GetMapping
     public String listaTodosProdutos(Model model){
         model.addAttribute("produtos", produtoService.getAllProdutos());
