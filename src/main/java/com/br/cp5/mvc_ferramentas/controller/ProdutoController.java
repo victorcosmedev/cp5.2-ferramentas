@@ -20,10 +20,10 @@ public class ProdutoController {
 
 
 
-    @GetMapping
+    @GetMapping("/listar")
     public String listaTodosProdutos(Model model){
         model.addAttribute("produtos", produtoService.getAllProdutos());
-        return "index";  // sem "templates/"
+        return "lista";
     }
 
 

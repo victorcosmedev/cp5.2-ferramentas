@@ -1,37 +1,48 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Atualizar Pátio</title>
+    <title>Atualizar Produto</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
-
 </head>
 <body>
-<h1>Atualizar Pátio</h1>
+<div class="container">
+    <header class="page-header">
+        <h1>Atualizar Produto</h1>
+    </header>
 
+    <main>
+        <div class="card">
+            <form th:action="@{/produto/editar/{id}(id=${produto.id})}" th:object="${produto}" method="post">
+                <input type="hidden" name="_method" value="put" />
 
-<form th:action="@{/produto/editar/{id}(id=${produto.id})}"
-      th:object="${produto}"
-      method="post">
-    <input type="hidden" name="_method" value="put" />
-
-    <label>Nome: </label>
-    <input type="text" th:field="*{nome}" />
-
-    <label>Tipo:</label>
-    <input type="text" th:field="*{tipo}"  />
-
-    <label>Classificação:</label>
-    <input type="text" th:field="*{classificacao}"  />
-
-    <label>Tamanho:</label>
-    <input type="number" th:field="*{tamanho}"  />
-
-    <label>Preço:</label>
-    <input type="number" th:field="*{preco}" step="any" min="0"  />
-
-    <button type="submit">Atualizar</button>
-</form>
-
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" th:field="*{nome}" class="form-control" required/>
+                </div>
+                <div class="form-group">
+                    <label for="tipo">Tipo:</label>
+                    <input type="text" id="tipo" th:field="*{tipo}" class="form-control" required/>
+                </div>
+                <div class="form-group">
+                    <label for="classificacao">Classificação:</label>
+                    <input type="text" id="classificacao" th:field="*{classificacao}" class="form-control" required/>
+                </div>
+                <div class="form-group">
+                    <label for="tamanho">Tamanho:</label>
+                    <input type="number" id="tamanho" th:field="*{tamanho}" class="form-control" required/>
+                </div>
+                <div class="form-group">
+                    <label for="preco">Preço:</label>
+                    <input type="number" id="preco" th:field="*{preco}" step="0.01" min="0" class="form-control" required/>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-success">Atualizar Produto</button>
+                    <a href="/produto" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </main>
+</div>
 </body>
 </html>

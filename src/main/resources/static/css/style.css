@@ -1,0 +1,163 @@
+/* --- Importação da Fonte e Variáveis de Tema --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    --primary-color: #007bff; /* Azul primário */
+    --secondary-color: #6c757d; /* Cinza para ações secundárias */
+    --success-color: #28a745; /* Verde para sucesso */
+    --danger-color: #dc3545; /* Vermelho para perigo/deleção */
+    --light-color: #f8f9fa;   /* Cor de fundo claro */
+    --dark-color: #343a40;    /* Cor de texto principal */
+    --background-color: #eef2f5; /* Fundo do body */
+    --border-radius: 8px;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --transition-speed: 0.3s;
+}
+
+/* --- Reset Básico e Estilos Globais --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--dark-color);
+    line-height: 1.6;
+}
+
+/* --- Layout Principal --- */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* --- Cabeçalho da Página --- */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+h1 {
+    font-weight: 700;
+    color: var(--dark-color);
+}
+
+/* --- Componente: Botão --- */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+    text-align: center;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary { background-color: var(--primary-color); }
+.btn-primary:hover { background-color: #0056b3; }
+
+.btn-secondary { background-color: var(--secondary-color); }
+.btn-secondary:hover { background-color: #5a6268; }
+
+.btn-danger { background-color: var(--danger-color); }
+.btn-danger:hover { background-color: #c82333; }
+
+/* --- Componente: Card (para itens da lista e formulários) --- */
+.card {
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 25px;
+    margin-bottom: 20px;
+    transition: box-shadow var(--transition-speed);
+}
+
+.card:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.card-header {
+    margin-bottom: 20px;
+}
+
+.card-header h2 {
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.product-details p {
+    margin-bottom: 8px;
+}
+
+.product-details strong {
+    margin-right: 8px;
+    color: #555;
+}
+
+.card-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px; /* Espaçamento entre os botões */
+}
+
+/* --- Estilos de Formulário --- */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    align-items: center;
+}
+
+.text-center {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.text-center a {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.text-center a:hover {
+    text-decoration: underline;
+}

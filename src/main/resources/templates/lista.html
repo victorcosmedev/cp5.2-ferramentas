@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Produtos</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <header class="page-header">
+        <h1>Lista de Produtos</h1>
+        <a href="/produto/novo" class="btn btn-primary">Adicionar Novo Produto</a>
+    </header>
+
+    <main>
+        <div class="card">
+            <form th:action="@{/produto/buscarPorNome}" method="get" class="form-group">
+                <label for="nome">Buscar por Nome:</label>
+                <input type="text" id="nome" name="nome" placeholder="Digite o nome do produto..." class="form-control"/>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-secondary">Buscar</button>
+                </div>
+            </form>
+        </div>
+
+        <div th:each="produto : ${produtos}" class="card">
+            <div class="card-header">
+                <h2 th:text="${produto.getNome()}">Nome do Produto</h2>
+            </div>
+            <div class="product-details">
+                <p><strong>Classificação:</strong> <span th:text="${produto.getClassificacao()}"></span></p>
+                <p><strong>Tipo:</strong> <span th:text="${produto.getTipo()}"></span></p>
+                <p><strong>Tamanho:</strong> <span th:text="${produto.getTamanho()}"></span></p>
+                <p><strong>Preço:</strong> R$ <span th:text="${#numbers.formatDecimal(produto.getPreco(), 1, 'POINT', 2, 'COMMA')}"></span></p>
+            </div>
+            <div class="card-actions">
+                <a th:href="@{'/produto/editar/' + ${produto.id}}" class="btn btn-secondary">Editar</a>
+                <form th:action="@{'/produto/' + ${produto.id}}" method="post">
+                    <input type="hidden" name="_method" value="delete" />
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja deletar?')">Deletar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>
