@@ -13,11 +13,7 @@
 
     <main>
         <div class="card">
-            <form th:action="@{/register}" method="post">
-                <div class="form-group">
-                    <label for="name">Nome Completo:</label>
-                    <input type="text" id="name" name="name" class="form-control" required/>
-                </div>
+            <form th:action="@{/user}" method="post">
                 <div class="form-group">
                     <label for="username">Nome de Usuário:</label>
                     <input type="text" id="username" name="username" class="form-control" required/>
