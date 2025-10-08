@@ -98,7 +98,7 @@ public class ProdutoService {
 
 
 
-    public Optional<Produto> findAllByNome(String nome) {
-        return produtoRepository.findByNome(nome);
+    public List<Produto> findByNomeContaining(String nome) {
+        return produtoRepository.findByNomeContaining(nome);
     }
 }

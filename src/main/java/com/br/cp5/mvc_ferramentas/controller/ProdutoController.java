@@ -24,7 +24,7 @@ public class ProdutoController {
     @GetMapping
     public String listaTodosProdutos(Model model){
         model.addAttribute("produtos", produtoService.getAllProdutos());
-        return "index";  // sem "templates/"
+        return "lista";
     }
 
 
@@ -42,10 +42,10 @@ public class ProdutoController {
     }
 
     @GetMapping("/buscarPorNome")
-    public String buscarPorNome(@RequestParam String nome, Model model){
-        List<Optional<Produto>> produto = Collections.singletonList(produtoService.findAllByNome(nome));
-        model.addAttribute("produtos", List.of(produto));
-        return "index";
+    public String buscarPorNome(@RequestParam String nome, Model model) {
+        List<Produto> produtosEncontrados = produtoService.findByNomeContaining(nome);
+        model.addAttribute("produtos", produtosEncontrados);
+        return "lista";
     }
 
 
