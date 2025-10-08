@@ -14,22 +14,17 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @GetMapping
-    public String listaTodosUsuarios(Model model) {
-        model.addAttribute("users", userService.getAllUsers());
-        return "lista-usuarios";
-    }
 
-    @GetMapping("/novo")
+    @GetMapping("/register")
     public String adicionarUsuarioForm(Model model) {
         model.addAttribute("user", new User());
-        return "formulario-usuario";
+        return "register";
     }
 
     @PostMapping
     public String adicionarUsuario(User user) {
         userService.adicionarUsuario(user);
-        return "redirect:/user";
+        return "redirect:/";
     }
 
     @GetMapping("/editar/{id}")

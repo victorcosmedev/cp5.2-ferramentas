@@ -1,16 +1,15 @@
 package com.br.cp5.mvc_ferramentas.service;
 
-import com.br.cp5.mvc_ferramentas.exception.ProdutoNotFoundException;
 import com.br.cp5.mvc_ferramentas.exception.UserNotFoundException;
-import com.br.cp5.mvc_ferramentas.model.Produto;
 import com.br.cp5.mvc_ferramentas.model.User;
-import com.br.cp5.mvc_ferramentas.repository.ProdutoRepository;
 import com.br.cp5.mvc_ferramentas.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class UserService {
     @Autowired
     UserRepository userRepository;
