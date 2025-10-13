@@ -1,9 +1,7 @@
 package com.br.cp5.mvc_ferramentas.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,7 +10,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -48,9 +47,6 @@ public class Usuario implements UserDetails {
     public String getUsername() {
         return this.username;
     }
-
-    // Para simplificar, vamos retornar 'true' para os métodos abaixo.
-    // Você pode adicionar campos na sua entidade para controlar isso se precisar.
 
     @Override
     public boolean isAccountNonExpired() {

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserService {
+public class UsuarioService {
     @Autowired
     UserRepository userRepository;
 
@@ -19,6 +19,7 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
     public Usuario adicionarUsuario(Usuario user){
+        System.out.println("Service");
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }

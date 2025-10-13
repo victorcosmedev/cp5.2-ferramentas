@@ -1,7 +1,9 @@
 package com.br.cp5.mvc_ferramentas.config;
 
+import com.br.cp5.mvc_ferramentas.service.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,18 +16,25 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
-    @Bean
-    public AuthenticationProvider authenticationProvider(){
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setPasswordEncoder(passwordEncoder());
-        return provider;
+
+    private final CustomUserDetailsService customUserDetailsService;
+
+    public WebSecurityConfig(CustomUserDetailsService customUserDetailsService) {
+        this.customUserDetailsService = customUserDetailsService;
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    public AuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(customUserDetailsService);
+        authProvider.setPasswordEncoder(passwordEncoder());
+        return authProvider;
+    }
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -35,16 +44,11 @@ public class WebSecurityConfig {
                     httpForm.loginPage("/login")
                             .usernameParameter("email")
                             .passwordParameter("password")
-                            .failureUrl("/login?error")
+                            .defaultSuccessUrl("/", true)
                             .permitAll();
                 })
                 .authorizeHttpRequests(registry -> {
-                    registry.requestMatchers("/motoqueiro/dashboard", "/motoqueiro/editar/fechada/**")
-                            .hasRole("MOTOQUEIRO");
-                    registry.requestMatchers("/moto/**", "/vaga/**", "/patio/**",
-                            "/motoqueiro/**", "/secao/**", "/index", "/admin/**").hasAnyRole("ADMIN");
-
-                    registry.requestMatchers("/css/**", "/login").permitAll();
+                    registry.requestMatchers("/css/**", "/login", "/user/register", "/user").permitAll();
                     registry.anyRequest().authenticated();
                 })
                 .build();
