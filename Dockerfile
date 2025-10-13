@@ -1,33 +1,42 @@
-# --- Estágio 1: Build (Compilação) ---
-# CORREÇÃO AQUI: Usamos uma imagem oficial do Maven que já inclui o JDK 17.
-# Esta imagem tem tudo o que é necessário para compilar seu projeto.
-FROM maven:3.9.6-eclipse-temurin-17-jammy as builder
+# 1 - Imagem base com Maven e Java
+FROM maven:3.9.9-eclipse-temurin-17-alpine
 
-# Define o diretório de trabalho dentro do container
+# 2 - Atualiza o repositório do Alpine
+RUN apk update && apk add --no-cache bash
+
+# 3 - Cria um novo usuário
+RUN adduser -D userapp
+
+# 4 - Define que os próximos comandos usarão esse usuário
+USER userapp
+
+# 5 - Define diretório padrão
 WORKDIR /app
 
-# Copia o pom.xml primeiro para aproveitar o cache do Docker
-COPY pom.xml .
+# 6 - Copia os arquivos do projeto para dentro da imagem
+COPY --chown=userapp:userapp . .
 
-# Copia o resto do código-fonte do projeto
-COPY src ./src
-
-# Executa o comando do Maven. Agora o comando 'mvn' será encontrado.
+# 7 - Compila o projeto com Maven (sem executar testes)
 RUN mvn clean package -DskipTests
 
+# Troca de volta para root para copiar o .jar para outra imagem mais leve
+USER root
 
-# --- Estágio 2: Run (Execução) ---
-# Esta parte continua igual, usando a imagem leve apenas com o JRE.
-FROM eclipse-temurin:17-jre-jammy
+# 8 + 9 - Nova imagem mais enxuta apenas para execução
+FROM openjdk:17-jdk-slim
 
-# Define o diretório de trabalho
+# Cria usuário também na imagem de execução
+RUN adduser --disabled-password --gecos "" userapp
+
+USER userapp
+
 WORKDIR /app
 
-# Copia o arquivo .jar que foi gerado no estágio "builder" para a imagem final
-COPY --from=builder /app/target/mvc-ferramentas-0.0.1-SNAPSHOT.jar app.jar
+# Copia o .jar gerado na imagem anterior
+COPY --from=0 /app/target/ExercicioRevisao-0.0.1-SNAPSHOT.jar app.jar
 
-# Expõe a porta 8080
+# 8 - Expondo a porta
 EXPOSE 8080
 
-# Define o comando que será executado quando o container iniciar
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# 9 - Executa o comando com CMD
+CMD ["java", "-jar", "app.jar"]
