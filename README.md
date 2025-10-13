@@ -135,6 +135,7 @@ Este projeto foi desenvolvido por:
 O projeto foi desenvolvido utilizando a IDE: **IntelliJ IDEA**.
 
 ## Link Deploy
+Utilizamos **Render** para o deploy:
 
 https://cp5-2-ferramentas.onrender.com
 
