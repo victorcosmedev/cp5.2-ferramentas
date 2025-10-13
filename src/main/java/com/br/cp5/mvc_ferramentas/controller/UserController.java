@@ -1,7 +1,7 @@
 package com.br.cp5.mvc_ferramentas.controller;
 
 import com.br.cp5.mvc_ferramentas.exception.UserNotFoundException;
-import com.br.cp5.mvc_ferramentas.model.User;
+import com.br.cp5.mvc_ferramentas.model.Usuario;
 import com.br.cp5.mvc_ferramentas.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,26 +17,26 @@ public class UserController {
 
     @GetMapping("/register")
     public String adicionarUsuarioForm(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("user", new Usuario());
         return "register";
     }
 
     @PostMapping
-    public String adicionarUsuario(User user) {
+    public String adicionarUsuario(Usuario user) {
         userService.adicionarUsuario(user);
         return "redirect:/";
     }
 
     @GetMapping("/editar/{id}")
     public String carregarFormularioEdicao(@PathVariable Long id, Model model) throws UserNotFoundException {
-        User user = userService.findById(id)
+        Usuario user = userService.findById(id)
                 .orElseThrow(() -> new UserNotFoundException(id));
         model.addAttribute("user", user);
         return "formulario-atualiza-usuario";
     }
 
     @PutMapping("/editar/{id}")
-    public String atualizar(@PathVariable Long id, @ModelAttribute User user) throws UserNotFoundException {
+    public String atualizar(@PathVariable Long id, @ModelAttribute Usuario user) throws UserNotFoundException {
         userService.atualizarUser(id, user);
         return "redirect:/user";
     }
