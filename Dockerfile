@@ -33,7 +33,7 @@ USER userapp
 WORKDIR /app
 
 # Copia o .jar gerado na imagem anterior
-COPY --from=0 /app/target/ExercicioRevisao-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=0 /app/target/mvc-ferramentas-0.0.1-SNAPSHOT.jar app.jar
 
 # 8 - Expondo a porta
 EXPOSE 8080
