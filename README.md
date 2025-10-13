@@ -13,6 +13,9 @@ Este projeto foi desenvolvido como uma atividade acadêmica, demonstrando a apli
       * Sistema completo de registro, login e logout de usuários utilizando **Spring Security**.
       * Senhas armazenadas de forma segura no banco de dados com criptografia **BCrypt**.
       * Controle de acesso baseado em autenticação: apenas usuários logados podem gerenciar os produtos.
+   
+        
+<img width="1123" height="559" alt="image" src="https://github.com/user-attachments/assets/f6c1c530-5f9a-4233-bb21-3c650934846e" />
 
   * **⚙️ Gerenciamento de Produtos (CRUD)**
 
@@ -20,14 +23,21 @@ Este projeto foi desenvolvido como uma atividade acadêmica, demonstrando a apli
       * **Criação:** Formulário para adicionar novos produtos ao catálogo.
       * **Atualização:** Formulário para editar as informações de um produto existente.
       * **Deleção:** Opção para remover um produto do sistema de forma segura.
+      * **Funcionalidade** de busca para filtrar produtos pelo nome, facilitando a navegação.
 
-  * **🔍 Busca Dinâmica**
+<img width="1127" height="809" alt="image" src="https://github.com/user-attachments/assets/f301e028-42ed-4ee8-b0b9-b0efe0134ddf" />
 
-      * Funcionalidade de busca para filtrar produtos pelo nome, facilitando a navegação.
+<img width="1118" height="866" alt="image" src="https://github.com/user-attachments/assets/55b72cf7-0ade-4676-ae4d-e5da5542e663" />
+
+
+     
 
 ## 🛠️ Tecnologias Utilizadas
 
 A aplicação foi construída utilizando um conjunto de tecnologias modernas e robustas do ecossistema Java/Spring:
+
+<img width="1446" height="847" alt="image" src="https://github.com/user-attachments/assets/d944ef4c-da61-435e-8e82-92ed57e9d3ee" />
+
 
   * **Backend:**
 
@@ -119,3 +129,12 @@ Este projeto foi desenvolvido por:
   * **Arthur Eduardo Luna Pulini** - `RM 554848`
   * **Lucas Almeida Fernandes de Moraes** - `RM 557569`
   * **Victor Nascimento Cosme** - `RM 558856`
+
+## IDE Utilizada
+
+O projeto foi desenvolvido utilizando a IDE: **IntelliJ IDEA**.
+
+## Link Deploy
+
+https://cp5-2-ferramentas.onrender.com
+
