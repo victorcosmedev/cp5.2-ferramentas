@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -48,35 +47,6 @@ public class ProdutoService {
         }
 
         return false;
-    }
-
-    public Produto atualizarParcialmente(Long id, Map<String, Object> updates) throws ProdutoNotFoundException {
-        return produtoRepository.findById(id)
-                .map(produto -> {
-                    updates.forEach((key, value) -> {
-                        switch (key) {
-                            case "nome":
-                                produto.setNome((String) value);
-                                break;
-                            case "tipo":
-                                produto.setTipo((String) value);
-                                break;
-                            case "classificacao":
-                                produto.setClassificacao((String) value);
-                                break;
-                            case "tamanho":
-                                produto.setTamanho(convertToDouble(value));
-                                break;
-                            case "preco":
-                                produto.setPreco(convertToDouble(value));
-                                break;
-                            default:
-                                throw new IllegalArgumentException("Campo inválido: " + key);
-                        }
-                    });
-                    return produtoRepository.save(produto);
-                })
-                .orElseThrow(() -> new ProdutoNotFoundException(id));
     }
 
     private Double convertToDouble(Object value) {

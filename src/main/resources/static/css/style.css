@@ -1,14 +1,13 @@
-/* --- Importação da Fonte e Variáveis de Tema --- */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 :root {
-    --primary-color: #007bff; /* Azul primário */
-    --secondary-color: #6c757d; /* Cinza para ações secundárias */
-    --success-color: #28a745; /* Verde para sucesso */
-    --danger-color: #dc3545; /* Vermelho para perigo/deleção */
-    --light-color: #f8f9fa;   /* Cor de fundo claro */
-    --dark-color: #343a40;    /* Cor de texto principal */
-    --background-color: #eef2f5; /* Fundo do body */
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+    --background-color: #eef2f5;
     --border-radius: 8px;
     --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     --transition-speed: 0.3s;

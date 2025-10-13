@@ -20,7 +20,6 @@ spring:
       ddl-auto: update
     properties:
       hibernate:
-        # --- A CORREÇÃO ESTÁ AQUI ---
         dialect: org.hibernate.dialect.OracleDialect
         format_sql: true
     show-sql: true
