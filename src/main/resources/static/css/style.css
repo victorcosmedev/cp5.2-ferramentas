@@ -14,7 +14,6 @@
     --transition-speed: 0.3s;
 }
 
-/* --- Reset Básico e Estilos Globais --- */
 * {
     margin: 0;
     padding: 0;
@@ -28,14 +27,14 @@ body {
     line-height: 1.6;
 }
 
-/* --- Layout Principal --- */
+
 .container {
     max-width: 900px;
     margin: 40px auto;
     padding: 20px;
 }
 
-/* --- Cabeçalho da Página --- */
+
 .page-header {
     display: flex;
     justify-content: space-between;
@@ -50,7 +49,6 @@ h1 {
     color: var(--dark-color);
 }
 
-/* --- Componente: Botão --- */
 .btn {
     display: inline-block;
     padding: 10px 20px;
@@ -77,7 +75,8 @@ h1 {
 .btn-danger { background-color: var(--danger-color); }
 .btn-danger:hover { background-color: #c82333; }
 
-/* --- Componente: Card (para itens da lista e formulários) --- */
+.btn-success { background-color: var(--success-color); }
+.btn-success:hover { background-color: #218838; }
 .card {
     background-color: #fff;
     border-radius: var(--border-radius);
@@ -112,10 +111,9 @@ h1 {
 .card-actions {
     margin-top: 20px;
     display: flex;
-    gap: 10px; /* Espaçamento entre os botões */
+    gap: 10px;
 }
 
-/* --- Estilos de Formulário --- */
 .form-group {
     margin-bottom: 20px;
 }
@@ -160,4 +158,35 @@ h1 {
 
 .text-center a:hover {
     text-decoration: underline;
+}
+
+.page-header form {
+    margin: 0;
+}
+
+
+.page-header .logoutButtonFrom {
+    margin: 0;
+}
+
+
+.logoutButton {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+
+    background-color: var(--danger-color);
+}
+
+.logoutButton:hover {
+    transform: translateY(-2px);
+    background-color: #c82333;
 }

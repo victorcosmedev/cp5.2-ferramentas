@@ -3,7 +3,6 @@ package com.br.cp5.mvc_ferramentas.config;
 import com.br.cp5.mvc_ferramentas.service.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -18,6 +17,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class WebSecurityConfig {
 
     private final CustomUserDetailsService customUserDetailsService;
+
 
     public WebSecurityConfig(CustomUserDetailsService customUserDetailsService) {
         this.customUserDetailsService = customUserDetailsService;
@@ -44,7 +44,7 @@ public class WebSecurityConfig {
                     httpForm.loginPage("/login")
                             .usernameParameter("email")
                             .passwordParameter("password")
-                            .defaultSuccessUrl("/", true)
+                            .defaultSuccessUrl("/produto", true)
                             .permitAll();
                 })
                 .authorizeHttpRequests(registry -> {
